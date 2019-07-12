@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>comment</comment>
+<!-- 変数の数(2<=n) -->
+<entry key="numberOfVariables">10</entry>
+
+<!-- 粒子の数(3<=n) -->
+<entry key="numberOfParticles">100</entry>
+
+<!-- 評価回数(0<n) -->
+<entry key="numberOfIterations">100</entry>
+
+<!-- 目的関数の数(2<n) -->
+<entry key="numberOfObjectives">2</entry>
+
+<!-- 目的関数の数(2<n) -->
+<entry key="numberOfConstraints">0</entry>
+
+<!-- 目的関数の名前(クラス名) -->
+<entry key="nameOfObjectiveFunction">jp.ohtayo.mathopt.function.ZDT3</entry>
+
+<!-- 多目的最適化探索パラメータε,α(0<n<1) -->
+<entry key="epsilon">0.0</entry>
+<entry key="alpha">0.0</entry>
+
+</properties>

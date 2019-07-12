@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>comment</comment>
+<!-- 染色体のビット数 -->
+<entry key="numberOfBits">16</entry>
+
+<!-- 変数の数(1<=n) -->
+<entry key="numberOfVariables">10</entry>
+
+<!-- 粒子の数(1<=n) -->
+<entry key="numberOfPopulations">100</entry>
+
+<!-- 評価回数(0<n) -->
+<entry key="numberOfIterations">1000</entry>
+
+<!-- 目的関数の名前(クラス名) -->
+<entry key="nameOfObjectiveFunction">jp.ohtayo.mathopt.function.TestObjectiveFunction</entry>
+
+<entry key="rateOfCrossOver">1.0</entry>
+<entry key="rateOfMutation">0.01</entry>
+<entry key="numberOfElite">3</entry>
+
+</properties>
