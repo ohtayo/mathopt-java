@@ -19,7 +19,7 @@ import jp.ohtayo.mathopt.function.ObjectiveFunction;
  *
  * @author ohtayo <ohta.yoshihiro@outlook.jp>
  */
-public class MOPSO {
+public class OMOPSO {
 
 	/**
 	 * MOPSOのメイン関数です。<br>
@@ -34,7 +34,7 @@ public class MOPSO {
 	 * @param epsilon ε値
 	 * @param alpha α値
 	 */
-	public static void main(int numberOfVariables, int numberOfParticles, int numberOfIterations,
+	public void main(int numberOfVariables, int numberOfParticles, int numberOfIterations,
 					 int numberOfObjectives, String nameOfObjectiveFunction, double epsilon, double alpha)
 	{
 		//初期化
@@ -43,8 +43,7 @@ public class MOPSO {
 		swarm = evaluate(swarm, nameOfObjectiveFunction);
 
 		//グローバルベストにswarmをコピー
-		Swarm globalBest = new Swarm( numberOfParticles );
-		globalBest = swarm.copy();
+		Swarm globalBest = swarm.copy();
 
 		for (int iterate = 0; iterate<numberOfIterations; iterate++){
 			Logging.logger.info(iterate+1 + "世代目の計算を始めます。");
@@ -67,7 +66,7 @@ public class MOPSO {
 	 * @param globalBest グローバルベスト粒子群
 	 * @param iterate これまでの評価回数
 	 */
-	private static void save(Swarm globalBest, int iterate)
+	public void save(Swarm globalBest, int iterate)
 	{
 		//ファイル名の生成
 		String fileNameFitness  = "./result/fitness" + iterate +".csv";
@@ -89,9 +88,10 @@ public class MOPSO {
 	 * @param globalBest グローバルベスト粒子群
 	 * @return 更新した粒子群
 	 */
-	private static Swarm update(Swarm swarm, Swarm globalBest)
+	public Swarm update(Swarm swarm, Swarm globalBest)
 	{
-		Random random = new Random(32648L);
+//		Random random = new Random(32648L);	// シード固定
+		Random random = new Random();
 
 		//ランダム数
 		double w = 0.1+0.4*random.nextDouble();
@@ -138,7 +138,7 @@ public class MOPSO {
 	 * @param iterate これまでの評価回数
 	 * @return 突然変異を起こした粒子群
 	 */
-	public static Swarm mutate(Swarm swarm, int iterate)
+	public Swarm mutate(Swarm swarm, int iterate)
 	{
 		Random random = new Random(2149857L);
 
@@ -215,7 +215,7 @@ public class MOPSO {
 	 * @param nameOfObjectiveFunction 目的関数の名前
 	 * @return 適応度を更新した粒子群
 	 */
-	private static Swarm evaluate(Swarm swarm, String nameOfObjectiveFunction)
+	public Swarm evaluate(Swarm swarm, String nameOfObjectiveFunction)
 	{
 		int numberOfObjectives = swarm.particle[0].fitness.length;
 		for(int i=0; i<swarm.particle.length; i++)
@@ -235,7 +235,7 @@ public class MOPSO {
 	 * @param alpha α値
 	 * @return 次世代のグローバルベスト粒子群
 	 */
-	private static Swarm select(Swarm swarm, Swarm globalBest, String nameOfObjectiveFunction, double epsilon, double alpha)
+	public Swarm select(Swarm swarm, Swarm globalBest, String nameOfObjectiveFunction, double epsilon, double alpha)
 	{
 		int globalSize = swarm.particle.length;	//swarmと同じ数がグローバルベストのサイズ
 		Swarm combined = Swarm.add(swarm, globalBest);	//swarmとglobalBestを一つにする

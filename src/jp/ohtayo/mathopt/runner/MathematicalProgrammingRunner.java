@@ -27,6 +27,8 @@ public class MathematicalProgrammingRunner {
 		int repeat = 1000;
 		int population = 400;
 		QuasiNewton newton;
+		PSO pso;
+		OPSO opso;
 		double fitness;
 	
 		double alpha = 1, beta=0.5, ganma=2;
@@ -83,14 +85,16 @@ public class MathematicalProgrammingRunner {
 
 			start = System.currentTimeMillis();
 			for(int i=0; i<10; i++){
-				vector.set(i,7, PSO.main(length, population, repeat, objective[o], 0.3, 1.75, 1.75));
+				pso = new PSO();
+				vector.set(i,7, pso.main(length, population, repeat, objective[o], 0.3, 1.75, 1.75));
 			}
 			end = System.currentTimeMillis();
 			vector.set(10, 7, end-start);
 	
 			start = System.currentTimeMillis();
 			for(int i=0; i<10; i++){
-				vector.set(i,8, OPSO.main(length, population, repeat, objective[o], false));
+				opso = new OPSO();
+				vector.set(i,8, opso.main(length, population, repeat, objective[o]));
 			}
 			end = System.currentTimeMillis();
 			vector.set(10, 8, end-start);

@@ -8,7 +8,7 @@ import jp.ohtayo.mathopt.core.EvaluatedValues;
  *
  * @author ohtayo <ohta.yoshihiro@outlook.jp>
  */
-public class ZDT3_Constraint {
+public class ZDT3Constraint {
 	
 	/** 最大値の定義	*/	private final static double[] maxValue = {10.0, 10.0};
 	/** 最小値の定義	*/	private final static double[] minValue = {0.0, 0.0};

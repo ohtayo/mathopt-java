@@ -1,24 +1,24 @@
 package jp.ohtayo.mathopt.runner;
 
+import jp.ohtayo.commons.log.Logging;
+import jp.ohtayo.mathopt.algorithm.OMOPSOMultiThreadConstraint;
+import jp.ohtayo.mathopt.config.ConfigMOPSO;
+
 import java.io.File;
 
-import jp.ohtayo.mathopt.config.ConfigPSO;
-import jp.ohtayo.mathopt.algorithm.PSO;
-import jp.ohtayo.commons.log.Logging;
-
 /**
- * PSOクラスのサンプルプログラム<br>
+ * MOPSOクラスのサンプルプログラム<br>
  *
  * @author ohtayo<ohta.yoshihiro@outlook.jp>
  */
-public class PSORunner {
+public class OMOPSOMultiThreadRunner {
 
 	public static void main(String[] args) {
 
-		ConfigPSO config = new ConfigPSO();
+		ConfigMOPSO config = new ConfigMOPSO();
 		try{
 			//設定ファイル読み込み
-			config.read(".\\xml\\pso.config.xml");
+			config.read(".\\xml\\mopso.config.xml");
 		}catch(Exception e){
 			Logging.logger.severe(e.toString() + "\nプログラムを終了します。");
 			return;
@@ -27,51 +27,61 @@ public class PSORunner {
 				+ "\n  numberOfParticles  = " + config.numberOfParticles
 				+ "\n  numberOfVariables  = " + config.numberOfVariables
 				+ "\n  numberOfIterations = " + config.numberOfIterations
+				+ "\n  numberOfObjectives = " + config.numberOfObjectives
+				+ "\n  numberOfConstraints = " + config.numberOfConstraints
 				+ "\n  nameOfObjectiveFunction = " + config.nameOfObjectiveFunction
-				+ "\n  w = " + config.weight
-				+ "\n  c1 = " + config.constant1
-				+ "\n  c2 = " + config.constant2
+				+ "\n  filenameOfInitialSolutions = " + config.filenameOfInitialSolutions
+				+ "\n  epsilon = " + String.valueOf(config.epsilon)
+				+ "\n  alpha = " + String.valueOf(config.alpha)
 				+ "\n");
-		
+
 		//入力エラーチェック
 		try{
 			config.inputErrorCheck(
 					Integer.valueOf(config.numberOfVariables),
 					Integer.valueOf(config.numberOfParticles),
 					Integer.valueOf(config.numberOfIterations),
-					config.nameOfObjectiveFunction,
-					Double.valueOf(config.weight),
-					Double.valueOf(config.constant1),
-					Double.valueOf(config.constant2)
+					Integer.valueOf(config.numberOfObjectives),
+					Integer.valueOf(config.numberOfConstraints),
+					String.valueOf(config.nameOfObjectiveFunction),
+					String.valueOf(config.filenameOfInitialSolutions),
+					Double.valueOf(config.epsilon),
+					Double.valueOf(config.alpha)
 					);
 		}catch(Exception e){
-			Logging.logger.severe("コンフィグファイル(pso.config.xml)の内容を見なおしてください。");
+			Logging.logger.severe("コンフィグファイル(mopso.config.xml)の内容を見なおしてください。");
 			Logging.logger.info("プログラムを終了します。");
 			return;
 		}
 
-		
+
 		//resultフォルダがなければ作成
 		File dir = new File("./result");
 		if(dir.exists() == false){
 			dir.mkdir();
 			Logging.logger.info("resultフォルダを作成しました。");
 		}
-		
+
 		//mopsoの計算実行
 		Logging.logger.info("計算を開始します。");
 
-		PSO pso = new PSO();
-		pso.main(
+		int numberOfThreads = 8;
+
+		OMOPSOMultiThreadConstraint mopso = new OMOPSOMultiThreadConstraint();
+
+		mopso.main(
 				Integer.valueOf(config.numberOfVariables),
 				Integer.valueOf(config.numberOfParticles),
 				Integer.valueOf(config.numberOfIterations),
-				config.nameOfObjectiveFunction,
-				Double.valueOf(config.weight),
-				Double.valueOf(config.constant1),
-				Double.valueOf(config.constant2)
+				Integer.valueOf(config.numberOfObjectives),
+				String.valueOf(config.nameOfObjectiveFunction),
+				Integer.valueOf(config.numberOfConstraints),
+				Double.valueOf(config.epsilon),
+				Double.valueOf(config.alpha),
+				numberOfThreads,
+				config.filenameOfInitialSolutions
 				);
-		
+
 		Logging.logger.info("計算を終了します。");
 	}
 }

@@ -9,7 +9,7 @@
 <entry key="numberOfParticles">100</entry>
 
 <!-- 評価回数(0<n) -->
-<entry key="numberOfIterations">1000</entry>
+<entry key="numberOfIterations">100</entry>
 
 <!-- 目的関数の数(2<n) -->
 <entry key="numberOfObjectives">2</entry>

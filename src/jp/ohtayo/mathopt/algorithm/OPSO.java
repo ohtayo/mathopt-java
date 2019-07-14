@@ -1,13 +1,13 @@
 package jp.ohtayo.mathopt.algorithm;
 
 import jp.ohtayo.commons.log.Logging;
-import jp.ohtayo.commons.math.Matrix;
 import jp.ohtayo.commons.math.Vector;
 import jp.ohtayo.commons.math.Numeric;
 import jp.ohtayo.commons.random.Random;
-import jp.ohtayo.commons.io.Csv;
 import jp.ohtayo.mathopt.core.Particle;
 import jp.ohtayo.mathopt.core.Swarm;
+import jp.ohtayo.mathopt.algorithm.PSO;
+import jp.ohtayo.mathopt.algorithm.OMOPSO;
 
 /**
  * 粒子群最適化(PSO)アルゴリズムの計算を行うクラスです。<br>
@@ -17,28 +17,29 @@ import jp.ohtayo.mathopt.core.Swarm;
  *
  * @author ohtayo <ohta.yoshihiro@outlook.jp>
  */
-public class OPSO {
+public class OPSO extends PSO{
 
 	/**
 	 * OptimalPSOのメイン関数です。<br>
 	 * OptimalPSOの計算は本関数を呼び出して行います。<br>
-
 	 * @param numberOfVariables 変数の数
 	 * @param numberOfParticles 粒子の数
 	 * @param numberOfIterations 評価回数
 	 * @param nameOfObjectiveFunction 目的関数の名前
 	 * @return 最終世代のglobalbestの適応度
 	 */
-	public static double main(int numberOfVariables, int numberOfParticles, int numberOfIterations, String nameOfObjectiveFunction, boolean visualization)
+	public double main(int numberOfVariables, int numberOfParticles, int numberOfIterations, String nameOfObjectiveFunction)
 	{
+		// mutate()のためにOMOPSOをインスタンス化
+		OMOPSO omopso = new OMOPSO();
+
 		//初期化
 		Swarm swarm = new Swarm( numberOfParticles );
 		swarm.initialize( numberOfVariables, 1, nameOfObjectiveFunction );
 		swarm = evaluate(swarm, nameOfObjectiveFunction);
 		
 		//グローバルベストにswarmをコピー
-		Particle globalBest = new Particle( numberOfVariables, 1 );
-		globalBest = swarm.particle[0].copy();
+		Particle globalBest = swarm.particle[0].copy();
 		globalBest = updateGlobalBest(swarm, globalBest);
 
 		Vector bestFitness = new Vector(numberOfIterations);
@@ -49,50 +50,20 @@ public class OPSO {
 		
 			swarm = update(swarm, globalBest);
 			
-			//swarm = mutate(swarm,iterate);
-			swarm = MOPSO.mutate(swarm, iterate);
-			
+			swarm = omopso.mutate(swarm,iterate);
+
 			swarm = evaluate(swarm, nameOfObjectiveFunction);
 			
 			globalBest = updateGlobalBest(swarm, globalBest);
 
-			//Logging.logger.info("globalBestの適応度は" + globalBest.fitness[0] + "でした。");
 			Logging.logger.info(globalBest.toString());
 			bestFitness.set(iterate, globalBest.fitness[0] );
 		}
-		
-		//適応度変化の描画
-		if(visualization){
-			Vector horizon = new Vector(1,1,numberOfIterations);
-			Matrix fitness = new Matrix(horizon.length(),1+1);
-			fitness.setColumn(0, horizon); 	//横軸を設定
-			fitness.setColumn(1, bestFitness);	//縦軸は適応度
-			// Figure fig = new Figure("fitness","iterations","fitness");	// 描画は将来対応
-			// fig.plot(fitness);
-		}
-		
+
 		save(globalBest, numberOfIterations);
 		return bestFitness.get(numberOfIterations-1);
 	}
-	
-	/**
-	 * グローバルベスト粒子を保存します。<br>
-	 * @param globalBest グローバルベスト粒子
-	 * @param iterate 今までの評価回数
-	 */
-	private static void save(Particle globalBest, int iterate)
-	{
-		//ファイル名の生成
-		String fileName  = "./result/pso" + iterate +".csv";
-		
-		double[][] data = new double[globalBest.position.length+1][1];
-		data[0][0] = globalBest.fitness[0];
-		for(int i=1; i<globalBest.position.length+1; i++)
-			data[i][0] = globalBest.position[i-1];
-		//各データの保存
-		Csv.write(fileName ,data);			
-	}
-	
+
 	/**
 	 * 粒子群の位置の更新をします。<br>
 	 * @param swarm 粒子群
@@ -100,7 +71,7 @@ public class OPSO {
 	 * @return 更新した粒子群
 	 */
 	
-	private static Swarm update(Swarm swarm, Particle globalBest)
+	private Swarm update(Swarm swarm, Particle globalBest)
 	{
 		Random random = new Random();
 		
@@ -132,43 +103,6 @@ public class OPSO {
 			}
 		}
 		
-		return swarm;
-	}
-	
-	/**
-	 * グローバルベスト粒子を更新します。<br>
-	 * @param swarm 粒子群
-	 * @param globalBest グローバルベスト粒子
-	 * @return 更新したグローバルベスト粒子
-	 */
-	private static Particle updateGlobalBest(Swarm swarm, Particle globalBest)
-	{
-		Particle ret = new Particle(globalBest.position.length, 1);
-		ret = globalBest.copy();
-		
-		for(int i=0; i<swarm.particle.length; i++){
-			if( swarm.particle[i].fitness[0] < ret.fitness[0] )
-			{
-				ret = swarm.particle[i].copy();
-			}
-		}
-		return ret;
-	}
-	
-	/**
-	 * 粒子群の各粒子の評価を行い適応度を更新します。<br>
-	 * また、各粒子の最良適応度・位置も更新します。<br>
-	 * @param swarm 粒子群
-	 * @param nameOfObjectiveFunction 目的関数名
-	 * @return 更新した粒子群
-	 */
-	private static Swarm evaluate(Swarm swarm, String nameOfObjectiveFunction)
-	{
-		for(int i=0; i<swarm.particle.length; i++)
-		{
-			swarm.particle[i].evaluate(nameOfObjectiveFunction);
-			swarm.particle[i].updateBest(1);
-		}
 		return swarm;
 	}
 }

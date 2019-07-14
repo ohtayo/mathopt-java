@@ -3,7 +3,7 @@ package jp.ohtayo.mathopt.runner;
 import java.io.File;
 
 import jp.ohtayo.mathopt.config.ConfigMOPSO;
-import jp.ohtayo.mathopt.algorithm.MOPSO;
+import jp.ohtayo.mathopt.algorithm.OMOPSO;
 import jp.ohtayo.commons.log.Logging;
 
 /**
@@ -11,7 +11,7 @@ import jp.ohtayo.commons.log.Logging;
  *
  * @author ohtayo<ohta.yoshihiro@outlook.jp>
  */
-public class MOPSORunner {
+public class OMOPSORunner {
 
 	public static void main(String[] args) {
 
@@ -65,7 +65,8 @@ public class MOPSORunner {
 		//mopsoの計算実行
 		Logging.logger.info("計算を開始します。");
 
-		MOPSO.main(
+		OMOPSO mopso = new OMOPSO();
+		mopso.main(
 				Integer.valueOf(config.numberOfVariables),
 				Integer.valueOf(config.numberOfParticles),
 				Integer.valueOf(config.numberOfIterations),

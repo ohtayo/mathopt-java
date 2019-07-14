@@ -1,17 +1,17 @@
 package jp.ohtayo.mathopt.runner;
 
-import java.io.File;
-
-import jp.ohtayo.mathopt.config.ConfigPSO;
-import jp.ohtayo.mathopt.algorithm.PSO;
 import jp.ohtayo.commons.log.Logging;
+import jp.ohtayo.mathopt.algorithm.OPSO;
+import jp.ohtayo.mathopt.config.ConfigPSO;
+
+import java.io.File;
 
 /**
  * PSOクラスのサンプルプログラム<br>
  *
  * @author ohtayo<ohta.yoshihiro@outlook.jp>
  */
-public class PSORunner {
+public class OPSORunner {
 
 	public static void main(String[] args) {
 
@@ -32,7 +32,7 @@ public class PSORunner {
 				+ "\n  c1 = " + config.constant1
 				+ "\n  c2 = " + config.constant2
 				+ "\n");
-		
+
 		//入力エラーチェック
 		try{
 			config.inputErrorCheck(
@@ -50,26 +50,23 @@ public class PSORunner {
 			return;
 		}
 
-		
+
 		//resultフォルダがなければ作成
 		File dir = new File("./result");
 		if(dir.exists() == false){
 			dir.mkdir();
 			Logging.logger.info("resultフォルダを作成しました。");
 		}
-		
+
 		//mopsoの計算実行
 		Logging.logger.info("計算を開始します。");
 
-		PSO pso = new PSO();
-		pso.main(
+		OPSO opso = new OPSO();
+		opso.main(
 				Integer.valueOf(config.numberOfVariables),
 				Integer.valueOf(config.numberOfParticles),
 				Integer.valueOf(config.numberOfIterations),
-				config.nameOfObjectiveFunction,
-				Double.valueOf(config.weight),
-				Double.valueOf(config.constant1),
-				Double.valueOf(config.constant2)
+				config.nameOfObjectiveFunction
 				);
 		
 		Logging.logger.info("計算を終了します。");

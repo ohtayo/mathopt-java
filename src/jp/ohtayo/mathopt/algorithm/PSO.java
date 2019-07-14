@@ -30,7 +30,7 @@ public class PSO {
 	 * @param constant2 定数2
 	 * @return 最終世代のglobalbestの適応度
 	 */
-	public static double main(int numberOfVariables, int numberOfParticles, int numberOfIterations,
+	public double main(int numberOfVariables, int numberOfParticles, int numberOfIterations,
 			 String nameOfObjectiveFunction, double weight, double constant1, double constant2)
 	{
 		//初期化
@@ -39,8 +39,7 @@ public class PSO {
 		swarm = evaluate(swarm, nameOfObjectiveFunction);
 		
 		//グローバルベストにswarmをコピー
-		Particle globalBest = new Particle( numberOfVariables, 1 );
-		globalBest = swarm.particle[0].copy();
+		Particle globalBest = swarm.particle[0].copy();
 		globalBest = updateGlobalBest(swarm, globalBest);
 		
 		Vector bestFitness = new Vector(numberOfIterations);
@@ -56,18 +55,9 @@ public class PSO {
 			
 			globalBest = updateGlobalBest(swarm, globalBest);
 			Logging.logger.info(globalBest.toString());
-			//Logging.logger.info("globalBestの適応度は" + globalBest.fitness[0] + "でした。");
 			bestFitness.set(iterate, globalBest.fitness[0] );
 		}
-		
-		/*//適応度変化の描画
-		Vector horizon = new Vector(1,1,numberOfIterations);
-		Matrix fitness = new Matrix(horizon.length(),1+1);
-		fitness.setColumn(0, horizon); 	//横軸を設定
-		fitness.setColumn(1, bestFitness);	//縦軸は適応度
-		Figure fig = new Figure("fitness","iterations","fitness");
-		fig.plot(fitness);
-		*/
+
 		save(globalBest, numberOfIterations);
 		return bestFitness.get(numberOfIterations-1);
 
@@ -78,7 +68,7 @@ public class PSO {
 	 * @param globalBest グローバルベスト粒子
 	 * @param iterate 今までの評価回数
 	 */
-	private static void save(Particle globalBest, int iterate)
+	public void save(Particle globalBest, int iterate)
 	{
 		//ファイル名の生成
 		String fileName  = "./result/pso" + iterate +".csv";
@@ -98,7 +88,7 @@ public class PSO {
 	 * @param iterate 今までの評価回数
 	 * @return 突然変異を起こした粒子群
 	 */
-	private static Swarm mutate(Swarm swarm, int iterate)
+	public Swarm mutate(Swarm swarm, int iterate)
 	{
 		Random random = new Random();
 		double mutationRate = 1.0/swarm.particle[0].position.length;
@@ -134,7 +124,7 @@ public class PSO {
 	 * @return 更新した粒子群
 	 */
 	
-	private static Swarm update(Swarm swarm, Particle globalBest, double w, double c1, double c2)
+	public Swarm update(Swarm swarm, Particle globalBest, double w, double c1, double c2)
 	{
 		Random random = new Random();
 		
@@ -172,10 +162,9 @@ public class PSO {
 	 * @param globalBest グローバルベスト粒子
 	 * @return 更新したグローバルベスト粒子
 	 */
-	private static Particle updateGlobalBest(Swarm swarm, Particle globalBest)
+	public Particle updateGlobalBest(Swarm swarm, Particle globalBest)
 	{
-		Particle ret = new Particle(globalBest.position.length, 1);
-		ret = globalBest.copy();
+		Particle ret = globalBest.copy();
 		
 		for(int i=0; i<swarm.particle.length; i++){
 			if( swarm.particle[i].fitness[0] < ret.fitness[0] )
@@ -190,10 +179,10 @@ public class PSO {
 	 * 粒子群の各粒子の評価を行い適応度を更新します。<br>
 	 * また、各粒子の最良適応度・位置も更新します。<br>
 	 * @param swarm 粒子群
-	 * @param name 目的関数名
+	 * @param nameOfObjectiveFunction 目的関数名
 	 * @return 更新した粒子群
 	 */
-	private static Swarm evaluate(Swarm swarm, String nameOfObjectiveFunction)
+	public Swarm evaluate(Swarm swarm, String nameOfObjectiveFunction)
 	{
 		for(int i=0; i<swarm.particle.length; i++)
 		{
