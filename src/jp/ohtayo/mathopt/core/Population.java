@@ -194,8 +194,7 @@ public class Population {
 	public Population add(Population target)
 	{
 		Population result = new Population(individual.length+target.individual.length);
-		//result.initialize(target.individual[0].getVariable().length, target.individual[0].getNumberOfBits(), target.individual[0].fitness.length);
-		
+
 		for (int i=0; i<individual.length; i++)
 		{
 			result.individual[i]=individual[i].copy();
@@ -215,8 +214,7 @@ public class Population {
 	public Population picup(int[] index)
 	{
 		Population result = new Population(index.length);
-		//result.initialize(swarm.individual[0].getVariable().length, swarm.individual[0].getNumberOfBits(), swarm.individual[0].fitness.length);
-		
+
 		for (int i=0; i<index.length; i++)
 		{
 			for (int j=0; j<individual.length; j++)

@@ -53,7 +53,6 @@ public class DTLZ2 {
 
 		Vector temp = new Vector(variable);
 		double g = temp.get( objectiveNumber-1, variable.length-objectiveNumber-1).square().sum();
-		//double g = Numeric.sum( Numeric.square( Vector.slice(variable,objectiveNumber-1,variable.length-objectiveNumber-1) ) );
 		double a = 1+g;
 		
 		for (int i=0; i<objectiveNumber; i++)

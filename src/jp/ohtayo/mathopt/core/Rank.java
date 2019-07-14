@@ -398,8 +398,6 @@ public class Rank {
 		Matrix fitnessMatrix = new Matrix(fitness);
 		double[] maxFitness = fitnessMatrix.max("column").get();
 		double[] minFitness = fitnessMatrix.min("column").get();
-		//double[] maxFitness = Numeric.max(fitness, "column");
-		//double[] minFitness = Numeric.min(fitness, "column");
 		int objectiveNumber = fitness[0].length;
 		boolean[] finMaxEdge = new boolean[objectiveNumber];
 		boolean[] finMinEdge = new boolean[objectiveNumber];
@@ -443,7 +441,6 @@ public class Rank {
 				index = minIndex(temp);		//最小値のインデックスを格納
 				distance[i] = temp[index];	//最小値を格納
 				temp[index] = Double.MAX_VALUE;		//最小値を無限にする。
-				//distance[i] += Numeric.min(temp);	//2番目の最小値を加算
 				distance[i] += new Vector(temp).min();
 			}
 		}

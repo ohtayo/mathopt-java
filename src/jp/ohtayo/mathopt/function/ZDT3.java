@@ -33,10 +33,7 @@ public class ZDT3 {
 	 * @param variable 変数
 	 * @return 目的関数の値
 	 */
-	public static double[] execute(double[] variable) {
-		return execute(variable, 0);
-	}
-	public static double[] execute(double[] variable, int threadNumber)
+	public static double[] execute(double[] variable)
 	{
 		double[] fitness = new double[2];
 		fitness[0] = variable[0];

@@ -54,13 +54,11 @@ public class DTLZ3 {
 
 		Vector tmp = new Vector(variable);
 		Vector x = tmp.get( objectiveNumber-1, variable.length-objectiveNumber+1).minus(0.5);
-		//double[] x = Vector.minus( Vector.slice(variable,objectiveNumber-1,variable.length-objectiveNumber+1), 0.5 );
 		double[] temp = new double[x.length()];
 		for(int i=0; i<x.length(); i++)
 			temp[i] = Math.cos(20*Math.PI*x.get(i));
 		
 		double g = 100 * ( difficulty + x.square().minus(new Vector(temp)).sum());
-		//double g = 100 * ( difficulty + Numeric.sum( Vector.minus(Numeric.square(x), temp) ) );
 		double a = 1+g;
 		
 		for (int i=0; i<objectiveNumber; i++)

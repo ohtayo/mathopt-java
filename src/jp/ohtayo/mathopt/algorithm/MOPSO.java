@@ -102,8 +102,7 @@ public class MOPSO {
 
 		//グローバルベストからランク1配列を抽出
 		int[] rank = Rank.ranking(globalBest.getFitness(),0.0,0.0);	//ランク付け。ランク1だけでいいので正規化もalphaも不要
-		//int[] rank1Index = Rank.rankIndex(rank, (int)Numeric.min(Cast.intToDouble(rank)));//ランク1個体を抽出する。
-		int[] rank1Index = Rank.rankIndex(rank, (int)(new Vector(Cast.intToDouble(rank)).min()) );
+		int[] rank1Index = Rank.rankIndex(rank, (int)(new Vector(Cast.intToDouble(rank)).min()) );//ランク1個体を抽出する。
 
 		//全ての粒子に対して
 		for (int i=0; i<swarm.particle.length; i++){
@@ -159,13 +158,8 @@ public class MOPSO {
 			num1 = size+1; num2 = size+1; num3 = size;
 		}
 		//次にランダム数を生成
-		//int[] index = Numeric.sequence(0, 1, swarm.particle.length-1);
-		//index = Cast.doubleToInt( random.shuffle(Cast.intToDouble(index)) );
 		Vector index = new Vector(0,1,swarm.particle.length-1);
 		index = index.shuffle();
-		//int[] uniformIndex = Cast.doubleToInt(Vector.slice(Cast.intToDouble(index), 0, num1));
-		//int[] nonUniformIndex = Cast.doubleToInt(Vector.slice(Cast.intToDouble(index), num1, num2));
-		//int[] nonIndex = Cast.doubleToInt(Vector.slice(Cast.intToDouble(index), num1+num2, num3));
 		int[] uniformIndex = Cast.doubleToInt( index.get(0,num1).get() );
 		int[] nonUniformIndex = Cast.doubleToInt( index.get(num1,num2).get() );
 		int[] nonIndex = Cast.doubleToInt( index.get(num1+num2,num3).get() );
@@ -250,9 +244,7 @@ public class MOPSO {
 		double[][] fitness = combined.getFitness();	//fitnessを取得
 		double[] maxValue = (double[])ObjectiveFunction.getMaxValue(nameOfObjectiveFunction);	//最大値を取得
 		double[] minValue = (double[])ObjectiveFunction.getMinValue(nameOfObjectiveFunction);	//最小値を取得
-		//fitness = Numeric.normalize(fitness, maxValue, minValue);	//正規化
-		fitness = new Matrix(fitness).normalize(maxValue, minValue).get();
-		//int[] rank = Rank.ranking(fitness, epsilon, alpha);
+		fitness = new Matrix(fitness).normalize(maxValue, minValue).get();//正規化
 		int[] rank = Rank.ranking(combined.getFitness(), epsilon, alpha);
 
 		//境界ランク番号計算
@@ -287,13 +279,11 @@ public class MOPSO {
 		{
 			if (rank[i] < numOfBorderRank)
 			{
-				//combined.particle[i].copy(upper.particle[countUpper]);
 				upper.particle[countUpper] = combined.particle[i].copy();
 				countUpper++;
 			}
 			else if (rank[i] == numOfBorderRank)
 			{
-				//combined.particle[i].copy(border.particle[countBorder]);
 				border.particle[countBorder] = combined.particle[i].copy();
 				countBorder++;
 			}
@@ -302,10 +292,8 @@ public class MOPSO {
 		//境界ランク+上位ランクの近傍距離を計算し境界ランクのみ残す
 		Swarm last = Swarm.add(upper, border);
 		double[][] lastFitness = last.getFitness();
-		//lastFitness = Numeric.normalize(lastFitness, maxValue, minValue);	//正規化
-		lastFitness = new Matrix(lastFitness).normalize(maxValue, minValue).get();
+		lastFitness = new Matrix(lastFitness).normalize(maxValue, minValue).get();	//正規化
 		double[] lastDistance =  Rank.calculateDistance(lastFitness);
-		//double[] borderDistance = Vector.slice(lastDistance, upperRankSize, borderRankSize);
 		double[] borderDistance = new Vector(lastDistance).get(upperRankSize, borderRankSize).get();
 
 		//近傍距離でソートする
@@ -315,13 +303,11 @@ public class MOPSO {
 		//上位ランク粒子をglobalBestに保存
 		for (int i=0; i<upperRankSize; i++)
 		{
-			//upper.particle[i].copy(globalBest.particle[i]);
 			globalBest.particle[i] = upper.particle[i].copy();
 		}
 		//残数分境界ランクから順に抽出して保存
 		for (int i=0; i<(globalSize-upperRankSize) ; i++)
 		{
-			//border.particle[index[i]].copy(globalBest.particle[upperRankSize+i]);
 			globalBest.particle[upperRankSize+i] = border.particle[index[i]].copy();
 		}
 

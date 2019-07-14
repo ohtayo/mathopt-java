@@ -35,32 +35,7 @@ public class ObjectiveFunction {
 			return null;
 		}
 	}
-	
-	/**
-	 * 目的関数を計算して適応度を返します。<br>
-	 * マルチスレッド処理用にスレッド番号を渡して処理を実行させます<br>
-	 * @param variables 変数
-	 * @param nameOfObjectiveFunction 目的関数クラスの名前
-	 * @return 適応度
-	 */
-	public static Object execute(double[] variables, String nameOfObjectiveFunction, int threadNumber)
-	{
-		Class<?> cClass;
-		try{
-			//Staticでクラス定義と関数実行する
-			cClass = Class.forName(nameOfObjectiveFunction);						//クラスを定義
-			Method method = cClass.getMethod("execute", double[].class, int.class);	//double[]とintを引数に持つ関数を取得
-			Object ret = method.invoke(cClass, variables, threadNumber);			//関数の実行
-			
-			return ret;	//値を型変換して返す
-		}
-		catch(Exception e)
-		{
-			Logging.logger.severe(e.toString());
-			return null;
-		}
-	}
-	
+
 	/**
 	 * 目的関数の最大値を返します。<br>
 	 * @param nameOfObjectiveFunction 目的関数のクラス名

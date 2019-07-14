@@ -68,28 +68,7 @@ public class Particle{
 			fitness = (double[]) ObjectiveFunction.execute(position, nameOfObjectiveFunction);
 		}else{
 			//制約違反量と評価値を算出
-			EvaluatedValues ev = new EvaluatedValues(this.fitness.length, constraintViolation.length);
-			ev = (EvaluatedValues) ObjectiveFunction.execute(position, nameOfObjectiveFunction);
-			this.fitness = ev.fitness;
-			this.constraintViolation = ev.constraintViolation;
-		}
-	}
-
-	/**
-	 * 目的関数計算と適応度の更新をします。<br>
-	 * マルチスレッド実行用にスレッド番号も渡します<br>
-	 * @param nameOfObjectiveFunction 目的関数の名前<br>
-	 * @param threadNumber スレッド番号<br>
-	 */
-	public void evaluate(String nameOfObjectiveFunction, int threadNumber)
-	{
-		if( constraintViolation.length==0 ){
-			//制約違反量を使用しない場合そのまま評価値を算出
-			fitness = (double[]) ObjectiveFunction.execute(position, nameOfObjectiveFunction, threadNumber);
-		}else{
-			//制約違反量と評価値を算出
-			EvaluatedValues ev = new EvaluatedValues(this.fitness.length, constraintViolation.length);
-			ev = (EvaluatedValues) ObjectiveFunction.execute(position, nameOfObjectiveFunction, threadNumber);
+			EvaluatedValues ev = (EvaluatedValues) ObjectiveFunction.execute(position, nameOfObjectiveFunction);
 			this.fitness = ev.fitness;
 			this.constraintViolation = ev.constraintViolation;
 		}
