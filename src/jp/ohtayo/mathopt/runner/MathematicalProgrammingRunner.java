@@ -52,7 +52,7 @@ public class MathematicalProgrammingRunner {
 				vector.set(i,1, fitness);
 			}
 			end = System.currentTimeMillis();
-			vector.set(10, 1, end-start);
+			vector.set(10, 2, end-start);
 			
 			start = System.currentTimeMillis();
 			for(int i=0; i<10; i++){
