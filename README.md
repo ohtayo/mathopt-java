@@ -34,7 +34,7 @@ To add new objective function, create class and functions as follows:
     }
 
 ### Algorithm implementation
-For evaluation objective function, use ObjectiveFunction class and the name of objective function as String.
+For evaluation of objective function, use ObjectiveFunction class and the name of objective function as String.
 
     String nameOfObjectiveFunction = "jp.ohtayo.mathopt.function.Rastrigin";
     (double[])ObjectiveFunction.execute(variable, nameOfObjectiveFunction);
