@@ -1,6 +1,5 @@
 # mathopt-java
 The mathopt-java provides classes for developing mathematical programming and metaheuristics projects in java languages.
-<<<<<<< HEAD
 
 ## How to use
 
@@ -42,5 +41,3 @@ For evaluation objective function, use ObjectiveFunction class and the name of o
 
 ## Licence
 The mathopt-java is open-sourced software licensed under the [MIT license](https://github.com/ohtayo/mathopt-java/blob/master/LICENSE).
-=======
->>>>>>> origin/master
