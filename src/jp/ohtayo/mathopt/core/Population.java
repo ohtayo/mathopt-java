@@ -5,7 +5,7 @@ import jp.ohtayo.commons.random.Random;
 /**
  * 個体群を取り扱うクラスです．
  *
- * @author ohtayo<ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class Population {
 	

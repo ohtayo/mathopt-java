@@ -7,9 +7,6 @@ import java.util.concurrent.TimeUnit;
 import jp.ohtayo.commons.log.Logging;
 import jp.ohtayo.commons.math.Matrix;
 import jp.ohtayo.commons.math.Vector;
-import jp.ohtayo.commons.math.Numeric;
-import jp.ohtayo.commons.random.Random;
-import jp.ohtayo.commons.util.Cast;
 import jp.ohtayo.commons.io.Csv;
 import jp.ohtayo.mathopt.core.Swarm;
 import jp.ohtayo.mathopt.core.Rank;
@@ -20,7 +17,7 @@ import jp.ohtayo.mathopt.function.ObjectiveFunction;
  * 計算には他にnameOfObjectiveFunctionで指定した目的関数クラスが必要です。<br>
  * 制約条件によるペナルティを付けます。<br>
  *
- * @author ohtayo <ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class OMOPSOMultiThreadConstraint extends OMOPSO{
 
@@ -38,6 +35,7 @@ public class OMOPSOMultiThreadConstraint extends OMOPSO{
 	 * @param numberOfConstraints 制約数
 	 * @param epsilon ε値
 	 * @param alpha α値
+	 * @param numberOfThreads スレッド数
 	 * @param fileOfInitialSolutions 初期解を指定する場合そのファイル名。nullか空文字列ならランダムで初期化
 	 */
 	public void main(int numberOfVariables, int numberOfParticles, int numberOfIterations,

@@ -6,7 +6,7 @@ import jp.ohtayo.commons.math.Vector;
  * 多目的最適化のベンチマーク関数のクラスです。<br>
  * DTRZ2ベンチマークを計算します。<br>
  *
- * @author ohtayo<ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
 Ko */
 public class DTLZ2 {
 	

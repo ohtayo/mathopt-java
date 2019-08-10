@@ -11,7 +11,7 @@ import jp.ohtayo.mathopt.core.BinaryIndividual;
 /**
  * 世代交代モデルにJGG，交叉にUNDXを用いた実数地遺伝的アルゴリズムの計算クラスです．
  *
- * @author ohtayo<ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class JGGUNDX {
 	/**

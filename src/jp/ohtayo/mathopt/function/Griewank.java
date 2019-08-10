@@ -8,10 +8,10 @@ import jp.ohtayo.commons.math.Vector;
  * 設計変数間に依存関係を持つ多峰性関数です。<br>
  * 準最適解を求めるのは容易ですが、局所最適解が多数存在するため、大域的最適解を求めるのが困難です。<br>
  * Fgriewank(x) = 1+sum{i=1~n}( x_i^2/4000 )- multiply{i=1~n}( cos(x_i/sqrt(i)) )<br>
- * (-512<= x_i <= 512) <br>
+ * (-512&lt;= x_i &lt;= 512) <br>
  * min(Frastnigin(x)) = F(0,0,0,..,0) = 0 <br>
  *
- * @author ohtayo <ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class Griewank {
 	

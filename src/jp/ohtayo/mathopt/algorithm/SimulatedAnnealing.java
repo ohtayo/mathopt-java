@@ -11,7 +11,7 @@ import jp.ohtayo.mathopt.core.RealCodedIndividual;
 /**
  * 焼きなまし法(シミュレーテッドアニーリング)を計算するプログラムです．
  *
- * @author ohtayo<ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class SimulatedAnnealing {
 

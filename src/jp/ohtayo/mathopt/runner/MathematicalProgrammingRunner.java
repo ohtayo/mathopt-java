@@ -14,7 +14,7 @@ import jp.ohtayo.commons.math.Matrix;
 /**
  * 多数の数理最適化手法，メタヒューリスティクスの比較するプログラム例です．
  *
- * @author ohtayo<ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class MathematicalProgrammingRunner {
 	public static void main(String[] args){

@@ -9,7 +9,7 @@ import jp.ohtayo.mathopt.core.Simplex;
 /**
  * 滑降シンプレックス法を計算するクラスです。
  *
- * @author ohtayo <ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class DownhillSimplex {
 

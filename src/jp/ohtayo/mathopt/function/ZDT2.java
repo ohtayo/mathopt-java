@@ -4,7 +4,7 @@ package jp.ohtayo.mathopt.function;
  * 多目的最適化のベンチマーク関数のクラスです。<br>
  * ZDT2ベンチマークを計算します。<br>
  *
- * @author ohtayo <ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class ZDT2 {
 	

@@ -9,7 +9,7 @@ import jp.ohtayo.commons.log.Logging;
 /**
  * MOPSOクラスのサンプルプログラム<br>
  *
- * @author ohtayo<ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class OMOPSORunner {
 

@@ -6,7 +6,7 @@ import jp.ohtayo.commons.math.Vector;
 /**
  * 滑降シンプレックス法のシンプレックスの頂点を表すクラスです。
  *
- * @author ohtayo<ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class Vertex extends RealCodedIndividual {
 

@@ -6,7 +6,7 @@ import jp.ohtayo.commons.math.Vector;
 /**
  * 遺伝的アルゴリズムに利用する個体の抽象クラスです。
  *
- * @author ohtayo<ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public abstract class Individual {
 	

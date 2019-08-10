@@ -9,7 +9,7 @@ import jp.ohtayo.commons.log.Logging;
 /**
  * PSOクラスのサンプルプログラム<br>
  *
- * @author ohtayo<ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class PSORunner {
 

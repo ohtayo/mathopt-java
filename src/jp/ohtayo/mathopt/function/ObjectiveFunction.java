@@ -8,7 +8,7 @@ import jp.ohtayo.commons.log.Logging;
  * 最適化アルゴリズムの目的関数を計算するクラスです。<br>
  * クラス名を指定することで別途用意した目的関数計算クラスを呼び出して計算を実行します。<br>
  *
- * @author ohtayo<ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class ObjectiveFunction {
 	

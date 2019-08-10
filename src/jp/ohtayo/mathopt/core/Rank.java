@@ -10,7 +10,7 @@ import jp.ohtayo.commons.math.Vector;
  * 多目的最適化アルゴリズムのうち、個体の優劣やランクを取り扱うメソッドを提供するクラスです。<br>
  * 優劣判定、ランク付け、境界ランク番号計算、混雑距離計算等のメソッドを含みます。<br>
  *
- * @author ohtayo<ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class Rank {
 

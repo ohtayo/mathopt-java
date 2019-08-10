@@ -7,7 +7,7 @@ import jp.ohtayo.mathopt.function.ObjectiveFunction;
  * 位置・速度とその際の適応度を持つ粒子を提供します。<br>
  * また、粒子がこれまでに最も良かった粒子の位置と適応度を保存しておきます。<br>
  *
- * @author ohtayo<ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class Particle{
 	/** 位置(変数)	*/	public double[] position;

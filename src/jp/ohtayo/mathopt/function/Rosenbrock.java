@@ -7,10 +7,10 @@ import jp.ohtayo.commons.math.Vector;
  * 最適化アルゴリズムの目的関数であるRosenbrock関数です。<br>
  * 設計変数間に依存関係を持つ単峰性関数です。<br>
  * Frosenbrock(x) = sum{i=1~n-1}( 100*(x_i+1-x_i^2)^2 + (1-x_i)^2 )<br>
- * (-2.048<= x_i <= 2.048) <br>
+ * (-2.048&lt;= x_i &lt;= 2.048) <br>
  * min(Frastnigin(x)) = F(1,1,1,..,1) = 0 <br>
  *
- * @author ohtayo <ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class Rosenbrock {
 	

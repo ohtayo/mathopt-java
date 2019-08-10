@@ -14,7 +14,7 @@ import jp.ohtayo.mathopt.core.Population;
  * 計算には他にnameOfObjectiveFunctionで指定した目的関数クラスが必要です。<br>
  * 制約条件には対応していません。<br>
  *
- * @author ohtayo <ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class RCGA {
 

@@ -3,7 +3,7 @@ package jp.ohtayo.mathopt.function;
 /**
  * 最適化アルゴリズムの目的関数のサンプルクラスです。<br>
  *
- * @author ohtayo <ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class TestObjectiveFunction {
 	

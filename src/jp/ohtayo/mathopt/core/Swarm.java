@@ -9,7 +9,7 @@ import jp.ohtayo.mathopt.function.ObjectiveFunction;
  * 粒子群最適化(PSO)アルゴリズムの粒子群クラスです。<br>
  * 粒子クラス(Particle)を多数インスタンス化して,群として取り扱うメソッドを提供します。<br>
  *
- * @author ohtayo<ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class Swarm{
 

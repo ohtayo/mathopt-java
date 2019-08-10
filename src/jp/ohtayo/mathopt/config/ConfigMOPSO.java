@@ -9,7 +9,7 @@ import jp.ohtayo.mathopt.function.ObjectiveFunction;
 /**
  * 多目的粒子群最適化(MOPSO)のコンフィグ設定をXMLで外部に保存・読込するクラスです。<br>
  *
- * @author ohtayo <ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class ConfigMOPSO extends ConfigBase {
 

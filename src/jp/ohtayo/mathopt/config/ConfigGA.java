@@ -9,7 +9,7 @@ import jp.ohtayo.commons.util.StringUtility;
 /**
  * 遺伝的アルゴリズム(GA)のコンフィグ設定をXMLで外部に保存・読込するクラスです。<br>
  *
- * @author ohtayo <ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class ConfigGA extends ConfigBase {
 	

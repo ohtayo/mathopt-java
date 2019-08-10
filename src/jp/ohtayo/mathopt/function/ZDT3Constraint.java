@@ -6,7 +6,7 @@ import jp.ohtayo.mathopt.core.EvaluatedValues;
  * 多目的最適化のベンチマーク関数のクラスです。<br>
  * ZDT3ベンチマークを計算します。<br>
  *
- * @author ohtayo <ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class ZDT3Constraint {
 	

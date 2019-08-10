@@ -8,7 +8,7 @@ import jp.ohtayo.commons.math.Vector;
 /**
  * 滑降シンプレックス法の探索点集合(シンプレックス)を表すクラスです。
  *
- * @author ohtayo<ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class Simplex extends Population {
 

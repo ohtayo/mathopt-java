@@ -9,7 +9,7 @@ import jp.ohtayo.mathopt.function.ObjectiveFunction;
 /**
  * 準ニュートン法の探索を行うプログラムです．
  *
- * @author ohtayo <ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class QuasiNewton {
 	
@@ -21,9 +21,9 @@ public class QuasiNewton {
 	
 	/**
 	 * コンストラクタ
-	 * @param numberOfVariables
-	 * @param maxOfIterations
-	 * @param epsilon
+	 * @param numberOfVariables number of variables
+	 * @param maxOfIterations max number of iterations
+	 * @param epsilon difference size of
 	 * @param step
 	 * @param nameOfObjectiveFunction
 	 */
@@ -39,6 +39,7 @@ public class QuasiNewton {
 	/**
 	 * 準ニュートン法のメイン関数です。<br>
 	 * 準ニュートン法の計算は本関数を呼び出して行います。<br>
+	 * @param x0 initial design variable
 	 * @return 最終世代の適応度
 	 */
 	public double solve( double[] x0 )

@@ -9,7 +9,7 @@ import java.io.File;
 /**
  * MOPSOクラスのサンプルプログラム<br>
  *
- * @author ohtayo<ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class OMOPSOMultiThreadRunner {
 

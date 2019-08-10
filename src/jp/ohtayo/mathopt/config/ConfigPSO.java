@@ -8,10 +8,10 @@ import jp.ohtayo.mathopt.function.ObjectiveFunction;
 /**
  * 粒子群最適化(PSO)のコンフィグ設定をXMLで外部に保存・読込するクラスです。<br>
  *
- * @author ohtayo <ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class ConfigPSO extends ConfigBase {
-	
+
 	/** 変数の数	*/	public String numberOfVariables;
 	/** 粒子の数	*/	public String numberOfParticles;
 	/** 評価回数	*/	public String numberOfIterations;

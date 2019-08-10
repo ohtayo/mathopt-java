@@ -4,7 +4,7 @@ package jp.ohtayo.mathopt.core;
  * 評価値クラスです．<br>
  * 制約条件がある場合に多目的最適化の目的関数評価値を格納します．<br>
  *
- * @author ohtayo<ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class EvaluatedValues {
 	public double[] fitness;

@@ -9,7 +9,7 @@ import jp.ohtayo.mathopt.algorithm.SimpleGeneticAlgorithm;
 /**
  * GAクラスのサンプルプログラム<br>
  *
- * @author ohtayo<ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class GeneticAlgorithmRunner {
 

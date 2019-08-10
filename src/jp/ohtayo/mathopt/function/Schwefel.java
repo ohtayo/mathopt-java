@@ -7,10 +7,10 @@ import jp.ohtayo.commons.math.Vector;
  * 最適解が探索領域の境界付近にある多峰性関数で、設計変数間に依存関係はありません。<br>
  * 速いうちに大域的最適解を求めないと局所最適解に収束します。
  * Fschwefel(x) = sum{i=1~n}( -x_i * sin(sqrt(abs(x_i))) ) <br>
- * (-512<= x_i <= 512) <br>
+ * (-512&lt;= x_i &lt;= 512) <br>
  * min(Fschwefel(x)) = F(421,421,..,421) = -418.982887 <br>
  *
- * @author ohtayo <ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class Schwefel {
 	

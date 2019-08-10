@@ -7,10 +7,10 @@ import jp.ohtayo.commons.math.Vector;
  * 最適化アルゴリズムの目的関数であるRastrigin関数です。<br>
  * 最適解周辺に格子状に準最適解を持つ多峰性関数で、設計変数間に依存関係はありません。<br>
  * Frastrigin(x) = 10*n + sum{i=1~n}(x_i^2 - 10*cos(2*pi*x_i)) <br>
- * (-5.12<= x_i <= 5.12) <br>
+ * (-5.12&lt;= x_i &lt;= 5.12) <br>
  * min(Frastnigin(x)) = F(0,0,..,0) = 0 <br>
  *
- * @author ohtayo <ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class Rastrigin {
 	

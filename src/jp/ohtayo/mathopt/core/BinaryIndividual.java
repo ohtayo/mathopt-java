@@ -8,7 +8,7 @@ import jp.ohtayo.commons.math.Vector;
  * 個体の変数とコード化された染色体、適応度のフィールドを持ちます。<br>
  * 変数variableは0～1のdouble型配列で、染色体はvariableを2進数化したものです。<br>
  *
- * @author ohtayo<ohta.yoshihiro@outlook.jp>
+ * @author ohtayo (ohta.yoshihiro@outlook.jp)
  */
 public class BinaryIndividual extends Individual {
 	
